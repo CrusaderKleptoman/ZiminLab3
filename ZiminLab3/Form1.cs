@@ -169,7 +169,7 @@ namespace ZiminLab3
             this.labelBlue.Text = colorHSV.getColorBlue().ToString();
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-            formGraphics.FillEllipse(myBrush, new Rectangle(250, 150, 150, 150));
+            formGraphics.FillEllipse(myBrush, new Rectangle(250, 165, 150, 150));
             myBrush.Dispose();
             formGraphics.Dispose();
         }
