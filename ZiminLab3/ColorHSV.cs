@@ -27,16 +27,49 @@ namespace ZiminLab3
             this.colorBrightness = 0;
         }
 
-        public void addColorRed(double colorRed) { this.colorRed += colorRed; if (this.colorRed > 255) this.colorRed = 255; }
-        public void RemoveColorRed(double colorRed) { this.colorRed -= colorRed; if (this.colorRed < 0) this.colorRed = 0; }
-        public void addColorGreen(double colorGreen) { this.colorGreen += colorGreen; if (this.colorGreen > 255) this.colorGreen = 255; }
-        public void RemoveColorGreen(double colorGreen) { this.colorGreen -= colorGreen; if (this.colorGreen < 0) this.colorGreen = 0; }
-        public void addColorBlue(double colorBlue) { this.colorBlue += colorBlue; if (this.colorBlue > 255) this.colorRed = 255; }
-        public void RemoveColorBlue(double colorBlue) { this.colorBlue -= colorBlue; if (this.colorBlue < 0) this.colorBlue = 0; }
-        public void addColorSaturation(double colorSaturation) { this.colorSaturation += colorSaturation; ; if (this.colorSaturation > 100) this.colorSaturation = 100; }
-        public void RemoveColorSaturation(double colorSaturation) { this.colorSaturation -= colorSaturation; if (this.colorSaturation < 0) this.colorSaturation = 0; }
-        public void addColorBrightness(double colorBrightness) { this.colorBrightness += colorBrightness; ; if (this.colorBrightness > 100) this.colorBrightness = 100; }
-        public void RemoveColorBrightness(double colorBrightness) { this.colorBrightness -= colorBrightness; if (this.colorBrightness < 0) this.colorBrightness = 0; }
+        public void addHSVapam(double hue, double saturation, double brightness)
+        {
+            this.colorHue = hue;
+            if (this.colorHue > 360) { this.colorHue = 360; }
+            if (this.colorHue < 0) { this.colorHue = 0; }
+            this.colorSaturation = saturation;
+            if (this.colorSaturation > 100) { this.colorSaturation = 100; }
+            if (this.colorSaturation < 0) { this.colorSaturation = 0; }
+            this.colorBrightness = brightness;
+            if (this.colorBrightness > 100) { this.colorBrightness = 100; }
+            if (this.colorBrightness < 0) { this.colorBrightness = 0; }
+        }
+
+        public void addRGBparam(double red, double green, double blue)
+        {
+            this.colorRed = red;
+            if (this.colorRed > 255) { this.colorRed = 255; }
+            if (this.colorRed < 0) { this.colorRed = 0; }
+            this.colorGreen = green;
+            if (this.colorGreen > 255) { this.colorGreen = 255; }
+            if (this.colorGreen < 0) { this.colorGreen = 0; }
+            this.colorBlue = blue;
+            if (this.colorBlue > 255) { this.colorBlue = 255; }
+            if (this.colorBlue < 0) { this.colorBlue = 0; }
+        }
+        public void addRGBToHSV()
+        {
+            this.colorHue += getHueFromRGB();
+            if (this.colorHue > 360) { this.colorHue = 360; }
+            this.colorSaturation += getSaturationFromRGB();
+            if (this.colorSaturation > 100) { this.colorSaturation = 100; }
+            this.colorBrightness += getBrightnessFromRGB();
+            if (this.colorBrightness > 100) { this.colorBrightness = 100; }
+        }
+        public void removeRGBfromHSV()
+        {
+            this.colorHue -= getHueFromRGB();
+            if (this.colorHue < 0) { this.colorHue = 0; }
+            this.colorSaturation -= getSaturationFromRGB();
+            if (this.colorSaturation < 0) { this.colorSaturation = 0; }
+            this.colorBrightness -= getBrightnessFromRGB();
+            if (this.colorBrightness < 0) { this.colorBrightness = 0; }
+        }
         public double getColorHue() { return this.colorHue; }
         public double getColorRed() { return this.colorRed; }
         public double getColorGreen() { return this.colorGreen; }
@@ -65,39 +98,56 @@ namespace ZiminLab3
             return min;
         }
 
-        private void getHSVcollor()
+        private double getHueFromRGB()
         {
             double max = maxPigment();
             double min = minPigment();
+            double hue = 0;
             double red = this.colorRed / 255;
             double green = this.colorGreen / 255;
             double blue = this.colorBlue / 255;
            
-            if (max == colorRed && colorGreen >= colorBlue) { this.colorHue = 60 * ((green - blue) / ((max - min) / 255)); }
-            if (max == colorRed && colorGreen < colorBlue) { this.colorHue = 60 * ((green - blue) / ((max - min) / 255)) + 360; }
-            if (max == colorGreen) { this.colorHue = 60 * ((blue - red) / ((max - min) / 255)) + 120; }
-            if (max == colorBlue) { this.colorHue = 60 * ((red - green) / ((max - min) / 255)) + 240; }
-            if (max == min) { this.colorHue = 0; }
-            if (this.colorHue > 360) { this.colorHue = 360; }
-            if (this.colorHue < 0) { this.colorHue = 0; }
+            if (max == colorRed && colorGreen >= colorBlue) { hue = 60 * ((green - blue) / ((max - min) / 255)); }
+            if (max == colorRed && colorGreen < colorBlue) { hue = 60 * ((green - blue) / ((max - min) / 255)) + 360; }
+            if (max == colorGreen) { hue = 60 * ((blue - red) / ((max - min) / 255)) + 120; }
+            if (max == colorBlue) { hue = 60 * ((red - green) / ((max - min) / 255)) + 240; }
+            if (max == min) { hue = 0; }
+            if (hue > 360) { hue = 360; }
+            if (hue < 0) { hue = 0; }
 
-            if (max == 0) { this.colorSaturation = 0; }
-            else { this.colorSaturation = (max - min) / max; }
+            return hue;
+        }
+        private double getSaturationFromRGB()
+        {
+            double max = maxPigment();
+            double min = minPigment();
+            double saturation;
 
-            this.colorBrightness = max / 255 * 100;
+            if (max == 0) { saturation = 0; }
+            else { saturation = (max - min) / max; }
+
+            return saturation;
+        }
+
+        private double getBrightnessFromRGB()
+        {
+            double max = maxPigment();
+            double brightness;
+
+            brightness = max / 255;
+            return brightness;
         }
 
         public Color ColorFromHSV()
         {
-            this.getHSVcollor();
             int hueI = Convert.ToInt32(Math.Floor(colorHue / 60)) % 6;
             double f = colorHue / 60 - Math.Floor(colorHue / 60);
 
 
             int brightness = Convert.ToInt32(colorBrightness * 255 / 100) ;
-            int p = Convert.ToInt32(colorBrightness * (1 - colorSaturation) * 255 / 100);
-            int q = Convert.ToInt32(colorBrightness * (1 - f * colorSaturation) * 255 / 100 );
-            int t = Convert.ToInt32(colorBrightness * (1 - (1 - f) * colorSaturation) * 255 / 100);
+            int p = Convert.ToInt32(colorBrightness * (1 - colorSaturation / 100) * 255 / 100);
+            int q = Convert.ToInt32(colorBrightness * (1 - f * colorSaturation / 100) * 255 / 100 );
+            int t = Convert.ToInt32(colorBrightness * (1 - (1 - f) * colorSaturation / 100) * 255 / 100);
 
             if (hueI == 0)
                 return Color.FromArgb(255, brightness, t, p);
