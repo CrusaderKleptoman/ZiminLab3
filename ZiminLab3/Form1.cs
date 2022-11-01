@@ -36,9 +36,9 @@ namespace ZiminLab3
             this.labelHue.Text = Math.Floor(colorHSV.getColorHue()).ToString();
             this.labelSaturation.Text = Math.Floor((colorHSV.getColorSaturation())).ToString();
             this.labelBrightness.Text = Math.Floor(colorHSV.getColorBrightness()).ToString();
-            this.labelRed.Text = colorHSV.getColorRed().ToString();
-            this.labelGreen.Text = colorHSV.getColorGreen().ToString();
-            this.labelBlue.Text = colorHSV.getColorBlue().ToString();
+            this.labelRed.Text = myBrush.Color.R.ToString();
+            this.labelGreen.Text = myBrush.Color.G.ToString();
+            this.labelBlue.Text = myBrush.Color.B.ToString();
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
             formGraphics.FillEllipse(myBrush, new Rectangle(0, 200, 300, 300));
@@ -51,6 +51,7 @@ namespace ZiminLab3
             Properties.Settings.Default.textBoxRed = colorHSV.getColorRed();
             Properties.Settings.Default.textBoxGreen = colorHSV.getColorGreen();
             Properties.Settings.Default.textBoxBlue = colorHSV.getColorBlue();
+            Properties.Settings.Default.Save();
         }
 
         private void button1_Click(object sender, EventArgs e)

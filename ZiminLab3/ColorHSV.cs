@@ -126,7 +126,7 @@ namespace ZiminLab3
             if (max == 0) { saturation = 0; }
             else { saturation = (max - min) / max; }
 
-            return saturation;
+            return saturation * 100;
         }
 
         private double getBrightnessFromRGB()
@@ -135,19 +135,19 @@ namespace ZiminLab3
             double brightness;
 
             brightness = max / 255;
-            return brightness;
+            return brightness * 100;
         }
 
         public Color ColorFromHSV()
         {
-            int hueI = Convert.ToInt32(Math.Floor(colorHue / 60)) % 6;
-            double f = colorHue / 60 - Math.Floor(colorHue / 60);
+            int hueI = Convert.ToInt32(Math.Floor(this.colorHue / 60)) % 6;
+            double f = this.colorHue / 60 - Math.Floor(this.colorHue / 60);
 
 
-            int brightness = Convert.ToInt32(colorBrightness * 255 / 100) ;
-            int p = Convert.ToInt32(colorBrightness * (1 - colorSaturation / 100) * 255 / 100);
-            int q = Convert.ToInt32(colorBrightness * (1 - f * colorSaturation / 100) * 255 / 100 );
-            int t = Convert.ToInt32(colorBrightness * (1 - (1 - f) * colorSaturation / 100) * 255 / 100);
+            int brightness = Convert.ToInt32(this.colorBrightness * 255 / 100) ;
+            int p = Convert.ToInt32(this.colorBrightness * (1 - this.colorSaturation / 100) * 255 / 100);
+            int q = Convert.ToInt32(this.colorBrightness * (1 - f * this.colorSaturation / 100) * 255 / 100 );
+            int t = Convert.ToInt32(this.colorBrightness * (1 - (1 - f) * this.colorSaturation / 100) * 255 / 100);
 
             if (hueI == 0)
                 return Color.FromArgb(255, brightness, t, p);

@@ -128,7 +128,7 @@
             // labelHue
             // 
             this.labelHue.AutoSize = true;
-            this.labelHue.Location = new System.Drawing.Point(605, 40);
+            this.labelHue.Location = new System.Drawing.Point(502, 40);
             this.labelHue.Name = "labelHue";
             this.labelHue.Size = new System.Drawing.Size(13, 13);
             this.labelHue.TabIndex = 19;
@@ -137,7 +137,7 @@
             // labelSaturation
             // 
             this.labelSaturation.AutoSize = true;
-            this.labelSaturation.Location = new System.Drawing.Point(605, 65);
+            this.labelSaturation.Location = new System.Drawing.Point(502, 65);
             this.labelSaturation.Name = "labelSaturation";
             this.labelSaturation.Size = new System.Drawing.Size(13, 13);
             this.labelSaturation.TabIndex = 20;
@@ -146,7 +146,7 @@
             // labelBrightness
             // 
             this.labelBrightness.AutoSize = true;
-            this.labelBrightness.Location = new System.Drawing.Point(605, 88);
+            this.labelBrightness.Location = new System.Drawing.Point(502, 88);
             this.labelBrightness.Name = "labelBrightness";
             this.labelBrightness.Size = new System.Drawing.Size(13, 13);
             this.labelBrightness.TabIndex = 21;
@@ -164,7 +164,7 @@
             // labelBlue
             // 
             this.labelBlue.AutoSize = true;
-            this.labelBlue.Location = new System.Drawing.Point(502, 92);
+            this.labelBlue.Location = new System.Drawing.Point(605, 88);
             this.labelBlue.Name = "labelBlue";
             this.labelBlue.Size = new System.Drawing.Size(13, 13);
             this.labelBlue.TabIndex = 25;
@@ -173,7 +173,7 @@
             // labelGreen
             // 
             this.labelGreen.AutoSize = true;
-            this.labelGreen.Location = new System.Drawing.Point(502, 66);
+            this.labelGreen.Location = new System.Drawing.Point(605, 65);
             this.labelGreen.Name = "labelGreen";
             this.labelGreen.Size = new System.Drawing.Size(13, 13);
             this.labelGreen.TabIndex = 24;
@@ -182,7 +182,7 @@
             // labelRed
             // 
             this.labelRed.AutoSize = true;
-            this.labelRed.Location = new System.Drawing.Point(502, 40);
+            this.labelRed.Location = new System.Drawing.Point(605, 40);
             this.labelRed.Name = "labelRed";
             this.labelRed.Size = new System.Drawing.Size(13, 13);
             this.labelRed.TabIndex = 23;
@@ -254,7 +254,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(411, 66);
+            this.label7.Location = new System.Drawing.Point(411, 65);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 13);
             this.label7.TabIndex = 33;
@@ -263,7 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(446, 92);
+            this.label10.Location = new System.Drawing.Point(446, 88);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 34;
