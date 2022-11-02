@@ -143,7 +143,6 @@ namespace ZiminLab3
             int hueI = Convert.ToInt32(Math.Floor(this.colorHue / 60)) % 6;
             double f = this.colorHue / 60 - Math.Floor(this.colorHue / 60);
 
-
             int brightness = Convert.ToInt32(this.colorBrightness * 255 / 100) ;
             int p = Convert.ToInt32(this.colorBrightness * (1 - this.colorSaturation / 100) * 255 / 100);
             int q = Convert.ToInt32(this.colorBrightness * (1 - f * this.colorSaturation / 100) * 255 / 100 );
@@ -160,9 +159,7 @@ namespace ZiminLab3
             else if (hueI == 4)
                 return Color.FromArgb(255, t, p, brightness);
             else
-                return Color.FromArgb(255, brightness, p, q);
-
-            
+                return Color.FromArgb(255, brightness, p, q);           
         }
     }
 }
